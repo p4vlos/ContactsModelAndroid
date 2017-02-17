@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView contactListView;
     private LinearLayoutManager layoutManager;
 
+    private RecyclerView.Adapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,5 +29,10 @@ public class MainActivity extends AppCompatActivity {
         //Attach to recycler view
         contactListView.setLayoutManager(layoutManager);
 
+        //Setup adapter
+        adapter = new ContactListAdapter();
+
+        //Attach to recycler view
+        contactListView.setAdapter(adapter);
     }
 }
