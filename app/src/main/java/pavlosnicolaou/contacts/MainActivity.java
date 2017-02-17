@@ -38,5 +38,6 @@ public class MainActivity extends AppCompatActivity {
         //Divider between list cells
         DividerItemDecoration divider = new DividerItemDecoration(this, layoutManager.getOrientation());
         contactListView.addItemDecoration(divider);
+
     }
 }
