@@ -1,10 +1,10 @@
 package pavlosnicolaou.contacts;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,5 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Attach to recycler view
         contactListView.setAdapter(adapter);
+
+        //Divider between list cells
+        DividerItemDecoration divider = new DividerItemDecoration(this, layoutManager.getOrientation());
+        contactListView.addItemDecoration(divider);
     }
 }
