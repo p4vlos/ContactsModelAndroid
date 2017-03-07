@@ -4,6 +4,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,10 @@ import android.view.ViewGroup;
 public class ContactListFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private RecyclerView contactListView;
+    private LinearLayoutManager layoutManager;
+    private RecyclerView.Adapter adapter;
+
 
     public ContactListFragment() {
         // Required empty public constructor
@@ -28,7 +35,30 @@ public class ContactListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_contact_list, container, false);
+
+
+        //Wire recycler view
+        contactListView = (RecyclerView) view.findViewById(R.id.contact_list_view);
+
+        //Setup layout manager
+        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        layoutManager.scrollToPosition(0);
+
+        //Attach to recycler view
+        contactListView.setLayoutManager(layoutManager);
+
+        //Setup adapter
+        adapter = new ContactListAdapter();
+
+        //Attach to recycler view
+        contactListView.setAdapter(adapter);
+
+        //Divider between list cells
+        DividerItemDecoration divider = new DividerItemDecoration(getActivity(), layoutManager.getOrientation());
+        contactListView.addItemDecoration(divider);
+        return view;
     }
 
     @Override
