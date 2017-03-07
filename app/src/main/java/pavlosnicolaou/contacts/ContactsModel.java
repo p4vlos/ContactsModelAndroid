@@ -19,6 +19,10 @@ public class ContactsModel {
         contactList.add(new Contact("John", "Snow", "0784738291", R.drawable.jonsnow));
         contactList.add(new Contact("Daenerys", "Targaryen", "07848434934", R.drawable.daenerys));
         contactList.add(new Contact("Tyrion", "Lannister", "07841342394", R.drawable.tyrion));
+        contactList.add(new Contact("George", "Nicolaou", "0784738291", R.drawable.arya));
+        contactList.add(new Contact("Alexandros", "Zenios", "07848434934", R.drawable.sansa));
+        contactList.add(new Contact("Nikolas", "Andreou", "07841342394", R.drawable.cersei));
+
 
     }
 
