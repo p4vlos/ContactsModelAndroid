@@ -1,4 +1,4 @@
-package pavlosnicolaou.contacts;
+package info.efstratiou.contacts;
 
 import org.junit.Test;
 

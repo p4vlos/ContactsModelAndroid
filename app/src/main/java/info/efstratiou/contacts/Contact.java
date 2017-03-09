@@ -1,11 +1,10 @@
-package pavlosnicolaou.contacts;
+package info.efstratiou.contacts;
 
 /**
- * Created by vl1s on 17/02/2017.
+ * Created by ce208 on 16/02/2017.
  */
 
 public class Contact {
-
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -13,9 +12,9 @@ public class Contact {
 
     public Contact(String firstName, String lastName, String phoneNumber, int imageResource) {
         this.firstName = firstName;
+        this.imageResource = imageResource;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.imageResource = imageResource;
     }
 
     public String getFirstName() {
@@ -24,6 +23,14 @@ public class Contact {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public int getImageResource() {
+        return imageResource;
+    }
+
+    public void setImageResource(int imageResource) {
+        this.imageResource = imageResource;
     }
 
     public String getLastName() {
@@ -40,13 +47,5 @@ public class Contact {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public int getImageResource() {
-        return imageResource;
-    }
-
-    public void setImageResource(int imageResource) {
-        this.imageResource = imageResource;
     }
 }

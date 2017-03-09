@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_contact_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:showDividers="middle"
+    android:divider="?attr/dividerHorizontal"
+    tools:context="info.efstratiou.contacts.ContactListActivity">
+
+    <fragment
+        android:id="@+id/list_fragment"
+        android:name="info.efstratiou.contacts.ContactListFragment"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_contact_list" />
+
+
+    <fragment
+        android:id="@+id/details_fragment"
+        android:name="info.efstratiou.contacts.ContactDetailsFragment"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_contact_details" />
+
+</LinearLayout>
+

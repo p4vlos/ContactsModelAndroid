@@ -1,4 +1,4 @@
-package pavlosnicolaou.contacts;
+package info.efstratiou.contacts;
 
 import android.content.Context;
 import android.net.Uri;
@@ -15,16 +15,15 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ContactListFragment.OnFragmentInteractionListener} interface
+ * {@link OnContactItemClickedListener} interface
  * to handle interaction events.
  */
 public class ContactListFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
+    private OnContactItemClickedListener mListener;
     private RecyclerView contactListView;
     private LinearLayoutManager layoutManager;
-    private RecyclerView.Adapter adapter;
-
+    private ContactListAdapter adapter;
 
     public ContactListFragment() {
         // Required empty public constructor
@@ -35,27 +34,20 @@ public class ContactListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_contact_list, container, false);
+        View view =  inflater.inflate(R.layout.fragment_contact_list, container, false);
 
 
-        //Wire recycler view
         contactListView = (RecyclerView) view.findViewById(R.id.contact_list_view);
 
-        //Setup layout manager
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        layoutManager.scrollToPosition(0);
 
-        //Attach to recycler view
-        contactListView.setLayoutManager(layoutManager);
-
-        //Setup adapter
-        adapter = new ContactListAdapter();
-
-        //Attach to recycler view
+        // Passing the activity as attribute. This will be assigned to the listener in the adapter.
+        adapter = new ContactListAdapter(getActivity());
         contactListView.setAdapter(adapter);
 
-        //Divider between list cells
+        contactListView.setLayoutManager(layoutManager);
+
         DividerItemDecoration divider = new DividerItemDecoration(getActivity(), layoutManager.getOrientation());
         contactListView.addItemDecoration(divider);
         return view;
@@ -64,11 +56,11 @@ public class ContactListFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnContactItemClickedListener) {
+            mListener = (OnContactItemClickedListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnContactItemClickedListener");
         }
     }
 
@@ -88,8 +80,8 @@ public class ContactListFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public interface OnContactItemClickedListener {
+        // Called when a contact is clicked
+        void onContactItemClicked(int position);
     }
 }
